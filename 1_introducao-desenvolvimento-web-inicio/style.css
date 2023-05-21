@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+
+:root {
+    --white: #fff;
+    --color-primary: #0ee07b;
+    --color-secundary: #cc0000;
+
+    --font: 'Roboto', sans-serif;
+}
+
+* {
+    font-family: var(--font);
+}
+
+body {
+    background: linear-gradient(-120deg, transparent, #000 65%), url(./img/bg.jpg) 40% center;
+    color: #fff;
+    height: 100vw;
+}
+
+section {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 5vw 0;
+}
+
+#photo {
+    border-radius: 20px;
+    filter: opacity(55%) ;
+    height: 40vw;
+    margin-right: 5rem;
+    object-fit: cover;
+    width: 25vw;
+}
+
+.content {
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+#logos {
+    display: flex;
+    align-items: center;
+}
+
+#descomplica {
+    width: 125px;
+    margin-right: 20px;
+}
+
+#nubank {
+    width: 55px;
+}
+
+.title, .subtitle {
+    user-select: none;
+}
+
+.title {
+    font-size: 34px;
+    font-weight: 900;
+    margin-top: 2rem;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin: -15px 0 2.5rem;
+}
+
+input{
+    border: none;
+    padding: 15px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px 30px;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: var(--white);
+}
+
+.primary, .secundary {
+    color: var(--white);
+}
+
+.primary:hover, .secundary:hover {
+    background-color: var(--white);
+}
+
+.primary {
+    background-color: var(--color-primary);
+}
+
+.primary:hover {
+    color: var(--color-primary);
+}
+
+.secundary {
+    background-color: var(--color-secundary);
+}
+
+.secundary:hover {
+    color: var(--color-secundary);
+}
