@@ -1,12 +1,9 @@
-nav a {
-    color: #fdfdfd !important;
-}
-
 .photos{
     border-radius: 25px;
     width: 30rem;
 }
 
 .carousel-caption h5 {
-    font-size: 80px;
+    font-size: 40px;
+    color: #198754;
 }
