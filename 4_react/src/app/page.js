@@ -6,11 +6,18 @@ import { HeaderPartial } from "@/partials/HeaderPartial/HeaderPartial";
 import { AppContext } from "@/store/AppContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+const initialState = {
+  activePinId: null,
+  mode: null,
+  folders: [],
+  type: null,
+};
+
 export default function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <AppContext>
+        <AppContext initialState={initialState}>
           <HeaderPartial />
           <Routes>
             <Route path="/" element={<HomePage />} />
