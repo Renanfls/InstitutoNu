@@ -2,11 +2,11 @@
 import { Button, Badge } from "react-bootstrap";
 import CardBS from "react-bootstrap/Card";
 
-export const Card = ({ image, total, title, onClick }) => (
+export const Card = ({ id, image, total, title, onClick }) => (
   <CardBS>
     <CardBS.Img src={image} alt="Card image" />
     <CardBS.ImgOverlay>
-      <Button variant="primary" onClick={onClick}>
+      <Button variant="primary" onClick={() => onClick(id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
