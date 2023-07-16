@@ -11,6 +11,7 @@ const initialState = {
   mode: null,
   folders: [],
   type: null,
+  pins: [],
 };
 
 export default function App() {

@@ -69,3 +69,28 @@ export const savePinInFolder = async (folderId, pinId) => {
 
   return { ...folders[folderIndex] };
 };
+
+export const getPins = async () => {
+  return [
+    {
+      id: "122",
+      title: "Css",
+      image: "https://picsum.photos/200/135?53",
+      total: 0,
+    },
+    {
+      id: "133",
+      title: "JS",
+      image:
+        "https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      total: 0,
+    },
+    {
+      id: "144",
+      title: "React JS",
+      image:
+        "https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      total: 0,
+    },
+  ];
+};

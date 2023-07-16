@@ -4,6 +4,7 @@ import { CardContainer } from "@/containers/Card/CardContainer";
 import { ModalCreateFolder } from "@/containers/ModalCreateFolder/ModalCreateFolder";
 import { ModalSavePin } from "@/containers/ModalSavePin/ModalSavePin";
 import { useAppContext } from "@/store/AppContext";
+import { fetchPinsAction } from "@/store/actions";
 import { saveFolderSuccessType } from "@/store/types";
 import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
@@ -14,6 +15,19 @@ export const HomePage = () => {
   const { state, dispatch } = useAppContext();
   const [showFeedback, setShowFeedback] = useState(false);
 
+  // Verifica se o pin está salvo na pasta
+  const pinsNormalized = state.pins.map((pin) => ({
+    ...pin,
+    total: state.folders.filter((folder) => folder.pins.includes(pin.id))
+      .length,
+  }));
+
+  // Exibe os pins na pagina
+  useEffect(() => {
+    fetchPinsAction(dispatch);
+  }, []);
+
+  // Exibe a notificação sempre que uma pasta for criada
   useEffect(() => {
     if (state.type === saveFolderSuccessType) {
       setShowFeedback(true);
@@ -33,29 +47,11 @@ export const HomePage = () => {
       )}
       <Container>
         <Row>
-          <Col xs={12} md={4}>
-            <CardContainer
-              id="123"
-              title="Card title"
-              image="https://picsum.photos/200/135?53"
-              total={0}
-            />
-          </Col>
-          <Col xs={12} md={4}>
-            <CardContainer
-              id="133"
-              title="Card title"
-              image="https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              total={0}
-            />
-          </Col>
-          <Col xs={12} md={4}>
-            <CardContainer
-              title="Card title"
-              image="https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              total={0}
-            />
-          </Col>
+          {pinsNormalized.map((pin) => (
+            <Col key={pin.id} xs={12} md={4}>
+              <CardContainer {...pin} />
+            </Col>
+          ))}
         </Row>
       </Container>
     </>

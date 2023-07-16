@@ -42,12 +42,44 @@ export const saveFolderSuccessAction = (folder) => ({
   type: types.saveFolderSuccessType,
   payload: folder,
 });
-export const saveFolderAction = async (dispatch, folderName) => {
+export const saveFolderAction = async (dispatch, folderName, pinId) => {
   dispatch(saveFolderInitAction());
+  await sleep(1000);
+  const newFolder = await pinService.saveFolder(folderName); // Sava no localStorage
+  const folder = await pinService.savePinInFolder(newFolder.id, pinId); // Salva o pin dentro da pasta que esta sendo criada
+  dispatch(saveFolderSuccessAction(folder));
+};
 
+// SAVE PIN IN FOLDER
+export const savePinInFolderInitAction = () => ({
+  type: types.savePinInFolderInitType,
+});
+export const savePinInFolderSuccessAction = (folders) => ({
+  type: types.savePinInFolderSuccessType,
+  payload: folders,
+});
+export const savePinInFolderAction = async (dispatch, pinId, folderId) => {
+  console.log(pinId, folderId);
+  dispatch(savePinInFolderInitAction());
   // Delay 1s
   await sleep(1000);
+  await pinService.savePinInFolder(folderId, pinId);
+  const folders = await pinService.getFolders();
+  dispatch(savePinInFolderSuccessAction(folders));
+};
 
-  const newFolder = await pinService.saveFolder(folderName); // Sava no localStorage
-  dispatch(saveFolderSuccessAction(newFolder));
+// FETCH PINS
+export const fetchPinsInitAction = () => ({
+  type: types.fetchPinsInitType,
+});
+export const fetchPinsSuccessAction = (pinsData) => ({
+  type: types.fetchPinsSuccessType,
+  payload: pinsData,
+});
+export const fetchPinsAction = async (dispatch) => {
+  dispatch(fetchPinsInitAction());
+  // Delay 1s
+  await sleep(1000);
+  const pinsData = await pinService.getPins();
+  dispatch(fetchPinsSuccessAction(pinsData));
 };
