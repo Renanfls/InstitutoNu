@@ -82,14 +82,14 @@ export const getPins = async () => {
       id: "133",
       title: "JS",
       image:
-        "https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://picsum.photos/200/135?33",
       total: 0,
     },
     {
       id: "144",
       title: "React JS",
       image:
-        "https://images.pexels.com/photos/2928867/pexels-photo-2928867.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://picsum.photos/200/135?23",
       total: 0,
     },
   ];
